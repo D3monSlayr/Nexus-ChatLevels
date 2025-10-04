@@ -67,7 +67,7 @@ Alias: `/chatlevels` → same as `/chatlvls`
 ---
 
 ## License
-This project is protected by a (**custom license**)[LICENSE].  
+This project is protected by a [**custom license**](LICENSE).  
 You may view or fork the code, but **redistribution, modification, or commercial use** is **not allowed** without permission from the author.
 
 © 2025 Kythera — All Rights Reserved.

@@ -15,7 +15,7 @@ Players gain XP through chatting and level up to unlock rewards — items or com
 
 ---
 
-## 🪄 Commands
+## Commands
 
 | Command | Description | Permission |
 |----------|--------------|-------------|
@@ -66,7 +66,7 @@ Alias: `/chatlevels` → same as `/chatlvls`
 
 ---
 
-## 🪪 License
+## License
 This project is protected by a (**custom license**)[LICENSE].  
 You may view or fork the code, but **redistribution, modification, or commercial use** is **not allowed** without permission from the author.
 

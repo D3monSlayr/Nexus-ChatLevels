@@ -1,0 +1,8 @@
+me\kythera\chatLevels\levels\LvlCommand.class
+me\kythera\chatLevels\ChatLevels.class
+me\kythera\chatLevels\rewards\Reward.class
+me\kythera\chatLevels\configs\RewardLoader.class
+me\kythera\chatLevels\levels\LevelUpListener.class
+me\kythera\chatLevels\levels\LevelUpManager.class
+me\kythera\chatLevels\configs\DataSaving.class
+me\kythera\chatLevels\rewards\LvlRewards.class

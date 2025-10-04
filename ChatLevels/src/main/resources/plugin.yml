@@ -1,0 +1,21 @@
+name: NexusChatLevels
+version: '1.0'
+main: me.kythera.chatLevels.ChatLevels
+api-version: '1.21'
+authors: [ Kythera ]
+description: NexusChatLevels by Kythera.
+
+commands:
+  chatlvls:
+    description: Allows players to use Chat Levels.
+    usage: /chatlvls <parameters>
+    permission: chatlvls.use
+    aliases: [chatlevels]
+
+permissions:
+  chatlvls.use:
+    default: true
+    description: Allows players to use chatlvls
+  chatlvls.admin:
+    default: op
+    description: Allows players to use admin permissions in chatlvls

@@ -1,0 +1,18 @@
+# The amount of XP a player earns after one chat message.
+multiplier: 1.0
+
+# The cooldown for the chat message. (seconds * 1000)
+cooldown: 5000
+
+# Default XP a player gets when they join the server for the first time.
+default-xp: 0
+
+# Messages sent when players level up.
+# {level} - The level the player is leveling up to.
+# {player} - The player that is leveling up.
+# <color name> - 'color name' can be replaced by any minecraft color constant: black, dark_blue, dark_green, dark_aqua, dark_red, dark_purple, gold, gray, dark_gray, blue, green, aqua, red, light_purple, yellow, or white.
+# <dark_grey> can be used in place of <dark_gray>, and so can <grey> in place of <gray>.
+messages:
+  level-up: "<green>Congrats! You leveled up to <gold>{level}<green>!"
+  no-rewards: "<red>There are no rewards for this level."
+  reward-given: "<green>You have received your rewards for level <gold>{level}<green>!"

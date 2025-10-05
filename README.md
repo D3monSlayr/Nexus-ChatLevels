@@ -15,36 +15,6 @@ Players gain XP through chatting and level up to unlock rewards — items or com
 
 ---
 
-## Commands
-
-| Command | Description | Permission |
-|----------|--------------|-------------|
-| `/chatlvls help` | Shows the help menu | `chatlvls.use` |
-| `/chatlvls xp` | Shows your current chat XP | `chatlvls.use` |
-| `/chatlvls xp for <level>` | Shows XP required for a level | `chatlvls.use` |
-| `/chatlvls xp player <player>` | Shows XP of another player | `chatlvls.admin` |
-| `/chatlvls level` | Shows your current chat level | `chatlvls.use` |
-| `/chatlvls level for <player>` | Shows another player’s level | `chatlvls.admin` |
-| `/chatlvls reload` | Reloads configs and rewards | `chatlvls.admin` |
-| `/chatlvls admin set xp <player> <xp>` | Sets player XP | `chatlvls.admin` |
-| `/chatlvls admin set level <player> <level>` | Sets player level | `chatlvls.admin` |
-| `/chatlvls admin rewards add material <level> <material:amount>` | Adds item reward | `chatlvls.admin` |
-| `/chatlvls admin rewards add command <level> <command>` | Adds command reward | `chatlvls.admin` |
-| `/chatlvls admin rewards remove <level> <reward>` | Removes reward | `chatlvls.admin` |
-| `/chatlvls admin rewards get <level>` | Shows rewards for a level | `chatlvls.admin` |
-
-Alias: `/chatlevels` → same as `/chatlvls`
-
----
-
-## 🧠 Permissions
-| Permission | Description |
-|-------------|--------------|
-| `chatlvls.use` | Basic command access |
-| `chatlvls.admin` | Full admin and config access |
-
----
-
 ## 🧩 Installation
 1. Download the latest release from the [Releases](../../releases) page.  
 2. Drop the `.jar` file into your `plugins` folder.  

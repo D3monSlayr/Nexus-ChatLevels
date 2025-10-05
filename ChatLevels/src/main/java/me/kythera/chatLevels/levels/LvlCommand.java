@@ -22,16 +22,16 @@ public class LvlCommand {
 
     private static boolean hasAdminPerm(CommandSender sender) {
         if (!(sender instanceof Player player)) return true; // console bypass
-        return player.hasPermission("chatlvls.admin");
+        return player.hasPermission("chatlevels.admin");
     }
 
     private static boolean hasUsePerm(CommandSender sender) {
         if (!(sender instanceof Player player)) return true; // console bypass
-        return player.hasPermission("chatlvls.use");
+        return player.hasPermission("chatlevels.use");
     }
 
     public static LiteralArgumentBuilder<CommandSourceStack> createCommand() {
-        return Commands.literal("chatlvls")
+        return Commands.literal("chatlevels")
                 // --- RELOAD ---
                 .then(Commands.literal("reload")
                         .executes(context -> {
@@ -321,6 +321,36 @@ public class LvlCommand {
 
                                             sender.sendRichMessage("<green>XP required for level <yellow>" + level +
                                                     "<green>: <bold>" + xpRequired);
+                                            return Command.SINGLE_SUCCESS;
+                                        })
+                                )
+                        )
+
+                        .then(Commands.literal("required")
+                                .then(Commands.argument("level", IntegerArgumentType.integer(1))
+                                        .executes(context -> {
+
+                                            CommandSender sender = context.getSource().getSender();
+
+                                            if(!(sender instanceof Player player)) {
+                                                sender.sendRichMessage("<red>Only players can use this command!");
+                                                return Command.SINGLE_SUCCESS;
+                                            }
+
+                                            if (!hasUsePerm(sender)) {
+                                                sender.sendRichMessage("<red>You don't have permission to view XP requirements!");
+                                                return Command.SINGLE_SUCCESS;
+                                            }
+
+                                            int level = IntegerArgumentType.getInteger(context, "level");
+                                            double xpRequired = LevelUpManager.getXpRequiredToReach(player.getUniqueId(), level);
+
+                                            sender.sendRichMessage("<green>You need <bold>" +
+                                                    xpRequired +
+                                                    "<reset> more ChatXP to reach level <bold>" +
+                                                    level +
+                                                    "<reset>.");
+
                                             return Command.SINGLE_SUCCESS;
                                         })
                                 )

@@ -24,6 +24,7 @@ public class LevelUpManager {
     // --- XP Methods ---
 
     public static double getXP(UUID uuid) {
+        DataSaving.saveConfig();
         ConfigurationSection section = getConfiguration().getConfigurationSection(uuid.toString());
         if (section != null) {
             return section.getDouble("xp", xpRecord.getOrDefault(uuid, 0.0));
@@ -49,6 +50,7 @@ public class LevelUpManager {
     // --- Level Methods ---
 
     public static int getLevel(UUID uuid) {
+        DataSaving.saveConfig();
         double xp = getXP(uuid);
         int level = 0;
 
@@ -85,7 +87,10 @@ public class LevelUpManager {
                 if (reward.isMaterial()) {
                     player.getInventory().addItem(new ItemStack(reward.getMaterial(), reward.getAmount()));
                 } else if (reward.isCommand()) {
-                    String cmd = reward.getCommand().replace("%player%", player.getName());
+                    String cmd = reward.getCommand()
+                            .replace("%xp%", String.valueOf(getXP(player.getUniqueId())))
+                            .replace("%level%", String.valueOf(getLevel(player.getUniqueId())))
+                            .replace("%player%", player.getName());
                     Bukkit.dispatchCommand(Bukkit.getConsoleSender(), cmd);
                 }
             }
@@ -97,11 +102,11 @@ public class LevelUpManager {
 
     // --- Utility Methods ---
 
-    public static double getXpRequiredForLevel(double level) {
+    public static double getXpRequiredForLevel(int level) {
         return 50 * level * level;
     }
 
-    public static double getXpRequiredToReach(UUID player, double level) {
+    public static double getXpRequiredToReach(UUID player, int level) {
         return 50 * level * level - getXP(player);
     }
 
@@ -143,24 +148,24 @@ public class LevelUpManager {
 
     public static void showNormalHelp(CommandSender sender) {
         sender.sendRichMessage("<gray>-----------------------------");
-        sender.sendRichMessage("<gold>/chatlvls help <gray>-<aqua> Shows this menu.");
-        sender.sendRichMessage("<gold>/chatlvls xp <gray>-<aqua> Shows your current Chat XP.");
-        sender.sendRichMessage("<gold>/chatlvls xp player <player> <gray>-<aqua> Shows the Chat XP of a player.");
-        sender.sendRichMessage("<gold>/chatlvls for <level> <gray>-<aqua> Shows the XP needed for a Chat level.");
-        sender.sendRichMessage("<gold>/chatlvls level <gray>-<aqua> Shows your current Chat Level.");
-        sender.sendRichMessage("<gold>/chatlvls level for <player> <gray>-<aqua> Shows a player’s level.");
+        sender.sendRichMessage("<gold>/chatlevels help <gray>-<aqua> Shows this menu.");
+        sender.sendRichMessage("<gold>/chatlevels xp <gray>-<aqua> Shows your current Chat XP.");
+        sender.sendRichMessage("<gold>/chatlevels xp player <player> <gray>-<aqua> Shows the Chat XP of a player.");
+        sender.sendRichMessage("<gold>/chatlevels for <level> <gray>-<aqua> Shows the XP needed for a Chat level.");
+        sender.sendRichMessage("<gold>/chatlevels level <gray>-<aqua> Shows your current Chat Level.");
+        sender.sendRichMessage("<gold>/chatlevels level for <player> <gray>-<aqua> Shows a player’s level.");
         sender.sendRichMessage("<gray>-----------------------------");
     }
 
     public static void showOpHelp(CommandSender sender) {
         sender.sendRichMessage("<gray>-----------------------------");
-        sender.sendRichMessage("<gold>/chatlvls reload <gray>-<aqua> Reloads rewards and levels.");
-        sender.sendRichMessage("<gold>/chatlvls admin set xp <player> <xp> <gray>-<aqua> Sets ChatXP for a player.");
-        sender.sendRichMessage("<gold>/chatlvls admin set level <player> <level> <gray>-<aqua> Sets Chat Level for a player.");
-        sender.sendRichMessage("<gold>/chatlvls rewards add material <level> <material>[:amount] <gray>-<aqua> Adds a material reward.");
-        sender.sendRichMessage("<gold>/chatlvls rewards add command <level> <command> <gray>-<aqua> Adds a command reward.");
-        sender.sendRichMessage("<gold>/chatlvls rewards remove <level> <reward> <gray>-<aqua> Removes a reward.");
-        sender.sendRichMessage("<gold>/chatlvls rewards get <level> <gray>-<aqua> Shows all rewards for a level.");
+        sender.sendRichMessage("<gold>/chatlevels reload <gray>-<aqua> Reloads rewards and levels.");
+        sender.sendRichMessage("<gold>/chatlevels admin set xp <player> <xp> <gray>-<aqua> Sets ChatXP for a player.");
+        sender.sendRichMessage("<gold>/chatlevels admin set level <player> <level> <gray>-<aqua> Sets Chat Level for a player.");
+        sender.sendRichMessage("<gold>/chatlevels rewards add material <level> <material>[:amount] <gray>-<aqua> Adds a material reward.");
+        sender.sendRichMessage("<gold>/chatlevels rewards add command <level> <command> <gray>-<aqua> Adds a command reward.");
+        sender.sendRichMessage("<gold>/chatlevels rewards remove <level> <reward> <gray>-<aqua> Removes a reward.");
+        sender.sendRichMessage("<gold>/chatlevels rewards get <level> <gray>-<aqua> Shows all rewards for a level.");
         sender.sendRichMessage("<gray>-----------------------------");
     }
 }

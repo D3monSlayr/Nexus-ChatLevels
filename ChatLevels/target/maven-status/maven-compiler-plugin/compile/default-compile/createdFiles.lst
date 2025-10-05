@@ -1,4 +1,5 @@
 me\kythera\chatLevels\levels\LvlCommand.class
+me\kythera\chatLevels\placeholders\AllPlaceholders.class
 me\kythera\chatLevels\ChatLevels.class
 me\kythera\chatLevels\rewards\Reward.class
 me\kythera\chatLevels\configs\RewardLoader.class
